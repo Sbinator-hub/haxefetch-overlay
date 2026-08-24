@@ -28,4 +28,7 @@ src_compile() {
 src_install() {
 	exeinto /usr/bin
    doexe haxefetch
+
+   insinto /usr/share/fish/vendor_completions.d
+   doins "${FILESDIR}/haxefetch.fish"
 }

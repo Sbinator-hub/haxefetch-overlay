@@ -54,4 +54,7 @@ src_install() {
     else
         die "Could not find binary. Aborting!"
     fi
+
+    insinto /usr/share/fish/vendor_completions.d
+    doins "${FILESDIR}/haxefetch.fish"
 }
