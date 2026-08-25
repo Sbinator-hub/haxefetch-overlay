@@ -14,7 +14,7 @@ SRC_URI="https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCP
 
 LICENSE="MIT"
 SLOT=0
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86 ~arm ~arm64"
 
 BDEPEND="
     ~dev-lang/haxe-4.3.7
@@ -42,8 +42,16 @@ src_compile() {
 
     haxelib dev hxcpp "${hxcpp_path}"
 
-    einfo "Compiling Haxefetch.."
-    haxe build.hxml -D git_hash=$(git rev-parse --short HEAD) -D no_debug || die "Haxefetch compilation failed. Aborting!"
+    einfo "Compiling Haxefetch for ${ARCH}.."
+    local haxe_arch=""
+    case "${ARCH}" in
+        amd64) haxe_arch="-D HXCPP_M64" ;;
+        x86) haxe_arch="-D HXCPP_M32" ;;
+        arm) haxe_arch="-D HXCPP_ARMV7" ;;
+        arm64) haxe_arch="-D HXCPP_ARM64" ;;
+    esac
+
+    haxe build.hxml ${haxe_arch} -D git_hash=$(git rev-parse --short HEAD) -D no_debug || die "Haxefetch compilation failed. Aborting!"
 }
 
 src_install() {
