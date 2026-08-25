@@ -17,7 +17,7 @@ SLOT=0
 KEYWORDS="~amd64"
 
 BDEPEND="
-    dev-lang/haxe
+    ~dev-lang/haxe-4.3.7
     app-arch/unzip
 "
 
