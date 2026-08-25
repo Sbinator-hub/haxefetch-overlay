@@ -51,7 +51,7 @@ src_compile() {
         arm64) haxe_arch="-D HXCPP_ARM64" ;;
     esac
 
-    haxe build.hxml ${haxe_arch} -D git_hash=$(git rev-parse --short HEAD) -D no_debug || die "Haxefetch compilation failed. Aborting!"
+    haxe build.hxml ${haxe_arch} -D no_debug || die "Haxefetch compilation failed. Aborting!"
 }
 
 src_install() {
