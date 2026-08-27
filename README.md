@@ -3,7 +3,7 @@
 ## How to install this?
 
 1. Install repository module (`emerge --ask --verbose eselect-repository`)
-2. Enable repo (`eselect repository add haxefetch-overlay git https://github.com/ACoolioDude/haxefetch-overlay.git`)
+2. Enable repo (`eselect repository add haxefetch-overlay git https://github.com/Sbinator-hub/haxefetch-overlay.git`)
 3. Sync repos (`emerge --sync haxefetch-overlay` || `emaint sync --repo haxefetch-overlay`)
 4. Unmask dependencies (`echo -e "dev-lang/haxe ~amd64\ndev-lang/neko ~amd64\ndev-ml/sedlex ~amd64\ndev-lang/ocaml ~amd64\ndev-ml/* ~amd64" | tee -a /etc/portage/package.accept_keywords/haxe
 `)
