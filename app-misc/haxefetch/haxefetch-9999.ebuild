@@ -52,7 +52,7 @@ src_compile() {
     if [[ -z "${hscript_path}" ]]; then
         die "HScript directory was not found in ${WORKDIR}. Aborting!"
     fi
-    haxelib dev hxcpp "${hscript_path}"
+    haxelib dev hscript "${hscript_path}"
 
     einfo "Compiling Haxefetch for ${ARCH}.."
     local haxe_arch=""
