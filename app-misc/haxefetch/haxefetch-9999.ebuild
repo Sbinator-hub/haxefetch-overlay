@@ -8,9 +8,12 @@ inherit git-r3
 DESCRIPTION="A fetch program written in Haxe (live)"
 HOMEPAGE="https://github.com/Sbinator-hub/Haxefetch"
 EGIT_REPO_URI="https://github.com/Sbinator-hub/Haxefetch.git"
+
+HSCRIPT_VERSION="2.7.0"
 HXCPP_VERSION="4.3.2"
 
-SRC_URI="https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCPP_VERSION}.zip"
+SRC_URI="https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCPP_VERSION}.zip 
+        https://lib.haxe.org/p/hscript/${HSCRIPT_VERSION}/download/ -> hscript-${HSCRIPT_VERSION}.zip"
 
 LICENSE="MIT"
 SLOT=0
@@ -28,6 +31,10 @@ src_unpack() {
     einfo "Extracting Hxcpp.."
     mkdir -p "${WORKDIR}/hxcpp-src" || die
     unzip -q "${DISTDIR}/hxcpp-${HXCPP_VERSION}.zip" -d "${WORKDIR}/hxcpp-src" || die
+
+    einfo "Extracting HScript.."
+    mkdir -p "${WORKDIR}/hscript-src" || die
+    unzip -q "${DISTDIR}/hscript-${HSCRIPT_VERSION}.zip" -d "${WORKDIR}/hscript-src" || die
 }
 
 src_compile() {
@@ -39,8 +46,13 @@ src_compile() {
     if [[ -z "${hxcpp_path}" ]]; then
         die "Hxcpp directory was not found in ${WORKDIR}. Aborting!"
     fi
-
     haxelib dev hxcpp "${hxcpp_path}"
+
+    local hscript_path=$(find "${WORKDIR}/hscript-src" -name "haxelib.json" -exec dirname {} \;)
+    if [[ -z "${hscript_path}" ]]; then
+        die "HScript directory was not found in ${WORKDIR}. Aborting!"
+    fi
+    haxelib dev hxcpp "${hscript_path}"
 
     einfo "Compiling Haxefetch for ${ARCH}.."
     local haxe_arch=""
