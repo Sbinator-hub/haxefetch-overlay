@@ -46,12 +46,14 @@ src_compile() {
     if [[ -z "${hxcpp_path}" ]]; then
         die "Hxcpp directory was not found in ${WORKDIR}. Aborting!"
     fi
+    einfo "Register HXCPP from ${hxcpp_path}.."
     haxelib dev hxcpp "${hxcpp_path}"
 
     local hscript_path=$(find "${WORKDIR}/hscript-src" -name "haxelib.json" -exec dirname {} \;)
     if [[ -z "${hscript_path}" ]]; then
         die "HScript directory was not found in ${WORKDIR}. Aborting!"
     fi
+    einfo "Register HScript from ${hscript_path}.."
     haxelib dev hscript "${hscript_path}"
 
     einfo "Compiling Haxefetch for ${ARCH}.."
