@@ -17,4 +17,4 @@
  - Unmask binary haxefetch (`echo "app-misc/haxefetch-bin ~amd64" | tee -a /etc/portage/package.accept-keywords/haxefetch-bin`)
  - Emerge binary haxefetch (`emerge --ask --verbose --update app-misc/haxefetch-bin`)
 
- > **Note:** Resyncing repos is required if you use live binary (source live is not required)
+ > **Note:** Resyncing repos is required if you use live binary (source live is not required expect if i update manifest)
