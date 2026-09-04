@@ -13,7 +13,8 @@ HSCRIPT_VERSION="2.7.0"
 HXCPP_VERSION="4.3.2"
 
 SRC_URI="https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCPP_VERSION}.zip 
-        https://lib.haxe.org/p/hscript/${HSCRIPT_VERSION}/download/ -> hscript-${HSCRIPT_VERSION}.zip"
+         https://lib.haxe.org/p/hscript/${HSCRIPT_VERSION}/download/ -> hscript-${HSCRIPT_VERSION}.zip
+"
 
 LICENSE="MIT"
 SLOT=0
