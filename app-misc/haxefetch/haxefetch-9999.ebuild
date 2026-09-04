@@ -12,8 +12,9 @@ EGIT_REPO_URI="https://github.com/Sbinator-hub/Haxefetch.git"
 HSCRIPT_VERSION="2.7.0"
 HXCPP_VERSION="4.3.2"
 
-SRC_URI="https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCPP_VERSION}.zip 
-         https://lib.haxe.org/p/hscript/${HSCRIPT_VERSION}/download/ -> hscript-${HSCRIPT_VERSION}.zip
+SRC_URI="
+    https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCPP_VERSION}.zip 
+    https://lib.haxe.org/p/hscript/${HSCRIPT_VERSION}/download/ -> hscript-${HSCRIPT_VERSION}.zip
 "
 
 LICENSE="MIT"
@@ -21,8 +22,9 @@ SLOT=0
 KEYWORDS="~amd64 ~x86 ~arm ~arm64"
 
 BDEPEND="
-    ~dev-lang/haxe-4.3.7
     app-arch/unzip
+    dev-vcs/git
+    ~dev-lang/haxe-4.3.7
 "
 
 src_unpack() {
