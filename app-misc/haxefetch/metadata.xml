@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>stefanmenicanin351@gmail.com</email>
-		<name>Stefan Menicanin</name>
+		<email>stefanbeta2008@gmail.com</email>
+		<name>ACoolioDude</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">Sbinator-hub/Haxefetch</remote-id>
 	</upstream>
 </pkgmetadata>
-metadata>
+<metadata>
