@@ -25,8 +25,8 @@ BDEPEND="
 "
 
 src_unpack() {
-    git-r3_fetch
-    git-r3_checkout
+    default
+    git-r3_src_unpack 2>&1 | grep -vE "EGIT_OVERRIDE|override fetched repository properties"
 
     einfo "Extracting Hxcpp.."
     mkdir -p "${WORKDIR}/hxcpp-src" || die

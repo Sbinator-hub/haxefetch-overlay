@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit optfeature
-
 HOMEPAGE="https://github.com/Sbinator-hub/Haxefetch"
 DESCRIPTION="A fetch program written in Haxe (binary)"
 SRC_URI="https://github.com/Sbinator-hub/Haxefetch/releases/download/1.0.0/haxefetch-1.0.0.tar.gz -> ${P}.tar.gz"
