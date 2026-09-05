@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">Sbinator-hub/Haxefetch</remote-id>
+		<bugs-to>https://github.com/Sbinator-hub/Haxefetch/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
