@@ -6,6 +6,7 @@ EAPI=8
 MY_PV="${PV/_/-}"
 MY_P="Haxefetch-${MY_PV}"
 HXCPP_VERSION="4.3.2"
+HSCRIPT_VERSION="2.7.0"
 
 DESCRIPTION="A fetch program written in Haxe"
 HOMEPAGE="https://github.com/Sbinator-hub/Haxefetch"
@@ -13,6 +14,7 @@ HOMEPAGE="https://github.com/Sbinator-hub/Haxefetch"
 SRC_URI="
     https://github.com/Sbinator-hub/Haxefetch/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
     https://lib.haxe.org/p/hxcpp/${HXCPP_VERSION}/download/ -> hxcpp-${HXCPP_VERSION}.zip
+    https://lib.haxe.org/p/hscript/${HSCRIPT_VERSION}/download/ -> hscript-${HSCRIPT_VERSION}.zip
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -32,14 +34,24 @@ src_compile() {
     mkdir -p "${HAXELIB_PATH}"
     haxelib setup "${HAXELIB_PATH}"
 
-    local hxcpp_path=$(find "${WORKDIR}" -maxdepth 3 -name "haxelib.json" -path "*/hxcpp/*" -exec dirname {}\;)
+    local hxcpp_path=$(find "${WORKDIR}" -maxdepth 3 -name "haxelib.json" -path "*/hxcpp/*" -exec dirname {} \; | head -n 1)
     if [[ -z "${hxcpp_path}" ]]; then
         hxcpp_path=$(find "${WORKDIR}" -maxdepth 3 -name "haxelib.json" -exec dirname {} \; | head -n 1)
-    else
+    fi
+    if [[ -z "${hxcpp_path}" ]]; then
         die "Hxcpp source was not found in ${WORKDIR}. Aborting!"
     fi
-
     haxelib dev hxcpp "${hxcpp_path}"
+
+    local hscript_path=$(find "${WORKDIR}" -maxdepth 3 -name "haxelib.json" -path "*/hscript/*" -exec dirname {} \; | head -n 1)
+    if [[ -z "${hscript_path}" ]]; then
+        hscript_path=$(find "${WORKDIR}" -maxdepth 3 -name "haxelib.json" -exec dirname {} \; | tail -n 1)
+    fi
+    if [[ -z "${hscript_path}" ]]; then
+        die "HScript directory was not found in ${WORKDIR}. Aborting!"
+    fi
+    einfo "Registering HScript from ${hscript_path}.."
+    haxelib dev hscript "${hscript_path}"
 
     einfo "Compiling Haxefetch for ${ARCH}.."
     local haxe_arch=""
