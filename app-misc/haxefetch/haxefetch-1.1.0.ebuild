@@ -74,7 +74,14 @@ src_install() {
         die "Could not find binary. Aborting!"
     fi
 
-    insinto /usr/share/fish/vendor_completions.d
-    doins "${FILESDIR}/haxefetch.fish"
+    if [[ -f "${FILESDIR}/haxefetch.fish" ]]; then
+        insinto /usr/share/fish/vendor_completions.d
+        doinst "${FILESDIR}/haxefetch.fish"
+    fi
+
+    if [[ -f "${FILESDIR}/haxefetch.zsh" ]]; then
+        insinto /usr/share/zsh/site-functions
+        doins "${FILESDIR}/haxefetch.zsh"
+    fi
 }
 
