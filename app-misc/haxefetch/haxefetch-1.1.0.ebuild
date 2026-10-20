@@ -81,7 +81,7 @@ src_install() {
 
     if [[ -f "${FILESDIR}/haxefetch.zsh" ]]; then
         insinto /usr/share/zsh/site-functions
-        doins "${FILESDIR}/haxefetch.zsh" _haxefetch
+        newins "${FILESDIR}/haxefetch.zsh" _haxefetch
     fi
 }
 
