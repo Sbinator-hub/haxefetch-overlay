@@ -82,7 +82,7 @@ src_install() {
 
     if [[ -f "${FILESDIR}/haxefetch.fish" ]]; then
         insinto /usr/share/fish/vendor_completions.d
-        doinst "${FILESDIR}/haxefetch.fish"
+        doins "${FILESDIR}/haxefetch.fish"
     fi
 
     if [[ -f "${FILESDIR}/haxefetch.zsh" ]]; then
