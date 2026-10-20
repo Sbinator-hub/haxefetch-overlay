@@ -81,7 +81,15 @@ src_install() {
 
     if [[ -f "${FILESDIR}/haxefetch.zsh" ]]; then
         insinto /usr/share/zsh/site-functions
-        doins "${FILESDIR}/haxefetch.zsh"
+        doins "${FILESDIR}/haxefetch.zsh" _haxefetch
     fi
+}
+
+pkg_postinst() {
+    elog "Welcome to Haxefetch. Thanks for installing it!"
+    elog "First thing first is to run 'haxefetch --tutorial' to"
+    elog "know how to use Haxefetch, also consider seeing"
+    elog " https://github.com/Sbinator-hub/Haxefetch "
+    elog "if you want to support ACoolioDude's project!" 
 }
 

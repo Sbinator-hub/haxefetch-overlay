@@ -66,3 +66,11 @@ src_install() {
     doins "${FILESDIR}/haxefetch.fish"
 }
 
+pkg_postinst() {
+    elog "Welcome to Haxefetch. Thanks for installing it!"
+    elog "First thing first is to run 'haxefetch --tutorial' to"
+    elog "know how to use Haxefetch, also consider seeing"
+    elog " https://github.com/Sbinator-hub/Haxefetch "
+    elog "if you want to support ACoolioDude's project!" 
+}
+
